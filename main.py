@@ -1,11 +1,5 @@
-
-# !pip install docling
-# !pip install langchain_community -q
-# !pip install openai -q
-# !pip install markdown2 -q
-
 from dotenv import load_dotenv
-
+import os
 load_dotenv()
 
 # Azure OpenAI setup
@@ -17,9 +11,9 @@ AZURE_DEPLOYMENT_NAME = os.getenv("AZURE_DEPLOYMENT_NAME")
 from openai import AzureOpenAI
 
 az_client = AzureOpenAI(
-  api_key=userdata.get("AZURE_API_KEY"),
-  azure_endpoint=userdata.get("AZURE_API_BASE"),
-  api_version=userdata.get("AZURE_API_VERSION")
+  api_key=AZURE_API_KEY,
+  azure_endpoint=AZURE_API_BASE,
+  api_version=AZURE_API_VERSION
 )
 
 from docling.document_converter import DocumentConverter
@@ -28,8 +22,7 @@ source = "./sample_contract.pdf"  # document per local path or URL
 converter = DocumentConverter()
 result = converter.convert(source)
 
-print(result.document.export_to_markdown())  # output: "## Docling Technical Report[...]"
-# result=result.document.export_to_markdown()
+# print(result.document.export_to_markdown()) 
 
 PROMPT = """Extract the following fields from the contract and give them as output in json:
 - Contract ID
@@ -76,7 +69,7 @@ output = az_client.chat.completions.create(
     messages=[
         {
             "role": "system",
-            "content": PROMPT1
+            "content": PROMPT
         },
         {
             "role": "user",
@@ -84,11 +77,8 @@ output = az_client.chat.completions.create(
         }
     ]
 )
-output
 
 answer =output.choices[0].message.content
-answer
-
 
 import markdown2
 from rich.console import Console
@@ -110,8 +100,6 @@ def print_pretty_markdown(markdown_text: str):
 # Example usage
 markdown_content = answer
 print_pretty_markdown(markdown_content)
-
-answer
 
 import re
 import pandas as pd
@@ -153,7 +141,8 @@ def validate_date(date_str):
 def validate_monetary(value):
     """Validate and reformat monetary values to decimals."""
     # Match values like $25,000 or 25000.00
-    match = re.match(r"^\$?([\d,]+(\.\d{2})?)$", value.replace(",", ""))
+    clean_value = value.replace(",", "")
+    match = re.match(r"^\$?([\d,]+(\.\d{2})?)$", clean_value)
     if match:
         # Remove commas, ensure decimal format
         numeric_value = float(match.group(1).replace(",", ""))

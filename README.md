@@ -1,3 +1,100 @@
+# Single Prompt Strategy: A Cost-Effective Approach
+Here's why this approach is technically sound:
+
+## API Economy
+
+- Reduced number of API calls results in lower operational costs
+- Minimizes latency by avoiding multiple round-trips
+- Better resource utilization through batch processing
+
+
+## Consistency Management
+```
+CopySingle Prompt → Single Context → Consistent Output Pattern
+vs.
+Multiple Prompts → Multiple Contexts → Potential Inconsistencies
+```
+# Dual Prompt Testing Framework
+The implementation of two prompts (concise vs. detailed) serves as an excellent empirical test bed:
+## Concise Prompt
+
+### Advantages:
+
+- Higher output consistency
+- Reduced token consumption
+- More predictable response patterns
+
+
+
+### Detailed Prompt
+
+Considerations:
+
+- Enhanced contextual understanding
+- Greater extraction precision potential
+- Requires structured output control
+
+
+
+### Technical Enhancement Pathway
+The path to leverage detailed prompts through the instructor library will be a more better and sound architectural decision:
+```
+Detailed Prompt + Instructor Library
+↓
+Structured Output Generation
+↓
+Consistent Response Patterns
+↓
+Enhanced Extraction Accuracy
+```
+# Infrastructure Advantages
+## DocLing Parser Integration
+
+- Sophisticated handling of complex contract structures
+- Pre-processing optimization
+- Enhanced text extraction quality
+
+## Azure OpenAI Tool Calling
+
+- Native integration capabilities
+- Robust validation framework
+- Enhanced error handling
+
+  ![image](https://github.com/user-attachments/assets/c8820dbc-acb8-40e0-bb26-364e999d00ee)
+
+# Future Architecture: Multi-Agent Framework
+Proposed enhancement through multi-agent architecture:
+## Agent Network Architecture:
+
+![image](https://github.com/user-attachments/assets/434d70fe-1383-44c2-aa7f-3b8b5230a638)
+
+
+## Key Advantages:
+
+- In-context memory persistence
+- Iterative accuracy improvement
+- Self-optimizing extraction patterns
+
+## Implementation Benefits Summary
+
+### Cost Optimization
+
+- Reduced API calls
+- Efficient token utilization
+- Streamlined processing pipeline
+
+
+### Technical Robustness
+
+- Consistent output patterns
+- Enhanced error handling
+- Scalable architecture
+
+This implementation demonstrates a sophisticated understanding of LLM architecture constraints while maintaining a clear path for future enhancements through multi-agent systems and memory context integration.
+
+
+# Detailed Current workflow
+
 ## Initial Setup and Configuration
 
 - The code starts by loading environment variables using dotenv

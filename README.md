@@ -53,6 +53,8 @@ Enhanced Extraction Accuracy
 - Sophisticated handling of complex contract structures
 - Pre-processing optimization
 - Enhanced text extraction quality
+  ![image](https://github.com/user-attachments/assets/c07b760f-e4a2-46fc-af02-3b3d2a4da0d9)
+
 
 ## Azure OpenAI Tool Calling
 

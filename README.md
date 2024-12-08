@@ -10,7 +10,7 @@ Here's why this approach is technically sound:
 
 ## Consistency Management
 ```
-CopySingle Prompt → Single Context → Consistent Output Pattern
+Single Prompt → Single Context → Consistent Output Pattern
 vs.
 Multiple Prompts → Multiple Contexts → Potential Inconsistencies
 ```
@@ -211,7 +211,9 @@ pip install -r requirements.txt
 ```
 4. Run
 ```
+# Without Tool Calling
 python main.py
-
+# With Tool Calling
+python main_withTool.py
 ```
 
